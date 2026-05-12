@@ -5,9 +5,62 @@
   <style>
     
   </style>
-  <script>
+ <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+    const firebaseConfig = {
+        apiKey: "AIzaSyC9l_HCx_V9mfxYvJkimZ5G5WIMY_cfJ3g",
+  authDomain: "thamyris-ecd9d.firebaseapp.com",
+  projectId: "thamyris-ecd9d",
+  storageBucket: "thamyris-ecd9d.firebasestorage.app",
+  messagingSenderId: "832929820683",
+  appId: "1:832929820683:web:8b2c7eaf3d3bde79ce570e",
+  measurementId: "G-MHFJP6EY9Q"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const form = document.getElementById("formUsuario");
+    const mensagem = document.getElementById("mensagem");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const cpf = document.getElementById("cpf").value;
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const telefone = document.getElementById("telefone").value;
+      const senha = document.getElementById("senha").value;
+      const cep = document.getElementById("cep").value;
+      const idade = document.getElementById("idade").value;
+
+      try {
+        await addDoc(collection(db, "usuarios"), {
+          cpf,
+          nome,
+          email,
+          telefone,
+          senha,
+          cep,
+          idade
+        });
+        mensagem.textContent = "Usuário salvo com sucesso.";
+        mensagem.style.color = "green";
+        form.reset();
+      } catch (error) {
+        mensagem.textContent = "Erro ao salvar: " + error.message;
+        mensagem.style.color = "red";
+      }
+    });
   </script>
+</body>
+</html>
 </head>
   <body>
     <form id="formulario"></form>
