@@ -5,6 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>676767</title>
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+       apiKey: "AIzaSyAUqMiMEgokg1HKorpP4ibt9MlldJR-yYw",
+  authDomain: "c-oficial-1df7d.firebaseapp.com",
+  projectId: "c-oficial-1df7d",
+  storageBucket: "c-oficial-1df7d.firebasestorage.app",
+  messagingSenderId: "81997680555",
+  appId: "1:81997680555:web:189b9a910471c83a034cee"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const form = document.getElementById("formulario");
+    const mensagem = document.getElementById("mensagem");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const cep = document.getElementById("cep").value;
+      const endereço = document.getElementById("endereço").value;
+      const complemento = document.getElementById("complemento").value;
+      const bairro = document.getElementById("bairro").value;
+      const cidade = document.getElementById("cidade").value;
+      const telefone 1 = document.getElementById("telefone 1").value;
+      const complemento 1 = document.getElementById("complemento 1").value;
+      const telefone 2 = document.getElementById("telefone 2").value;
+      const complemento 2 = document.getElementById("complemento 2").value;
+      const celular = document.getElementById("celular").value;
+      const complemento 3 = document.getElementById("complemento 3").value;
+      const Fax = document.getElementById("Fax").value;
+      const complemento 4 = document.getElementById("complemento 4").value;
+
+      try {
+        await addDoc(collection(db, "usuarios"), {
+          cep,
+          endereço,
+          complemento,
+          bairro,
+          cidade,
+          telefone 1,
+          complemento 1,
+          telefone 2,
+          complemento 2,
+          celular,
+          complemento 3,
+          Fax,
+          complemento 4
+        });
+
+        mensagem.textContent = "Usuário salvo com sucesso.";
+        mensagem.style.color = "green";
+        form.reset();
+      } catch (error) {
+        mensagem.textContent = "Erro ao salvar: " + error.message;
+        mensagem.style.color = "red";
+      }
+    });
+  </script>
+    
 </head>
 <body>
     <fieldset>
