@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>676767</title>
     <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import {
@@ -14,13 +12,13 @@
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const firebaseConfig = {
-        apiKey: "AIzaSyDrqxbfJ4UUI0by_mJXEUwPdh8cvqFPbDE",
-  authDomain: "endereco-6f8fe.firebaseapp.com",
-  projectId: "endereco-6f8fe",
-  storageBucket: "endereco-6f8fe.firebasestorage.app",
-  messagingSenderId: "884707793933",
-  appId: "1:884707793933:web:5afd041cbc6d5ed8574944",
-  measurementId: "G-KGWXXRWDYB"
+          apiKey: "AIzaSyDrqxbfJ4UUI0by_mJXEUwPdh8cvqFPbDE",
+          authDomain: "endereco-6f8fe.firebaseapp.com",
+          projectId: "endereco-6f8fe",
+          storageBucket: "endereco-6f8fe.firebasestorage.app",
+          messagingSenderId: "884707793933",
+          appId: "1:884707793933:web:5afd041cbc6d5ed8574944",
+          measurementId: "G-KGWXXRWDYB"
     };
 
     const app = initializeApp(firebaseConfig);
@@ -33,34 +31,34 @@
       e.preventDefault();
 
       const cep = document.getElementById("cep").value;
-      const endereco = document.getElementById("endereço").value;
+      const endereco = document.getElementById("endereco").value;
       const complemento = document.getElementById("complemento").value;
       const bairro = document.getElementById("bairro").value;
       const cidade = document.getElementById("cidade").value;
-      const telefone 1 = document.getElementById("telefone 1").value;
-      const complemento 1 = document.getElementById("complemento 1").value;
-      const telefone 2 = document.getElementById("telefone 2").value;
-      const complemento 2 = document.getElementById("complemento 2").value;
+      const telefone1 = document.getElementById("telefone1").value;
+      const complemento1 = document.getElementById("complemento1").value;
+      const telefone2 = document.getElementById("telefone2").value;
+      const complemento2 = document.getElementById("complemento2").value;
       const celular = document.getElementById("celular").value;
-      const complemento 3 = document.getElementById("complemento 3").value;
-      const fax = document.getElementById("Fax").value;
-      const complemento 4 = document.getElementById("complemento 4").value;
+      const complemento3 = document.getElementById("complemento3").value;
+      const fax = document.getElementById("complemento2").value;
+      const complemento4 = document.getElementById("complemento4").value;
 
       try {
         await addDoc(collection(db, "endereco"), {
           cep,
-          endereço,
+          endereco,
           complemento,
           bairro,
           cidade,
-          telefone 1,
-          complemento 1,
-          telefone 2,
-          complemento 2,
+          telefone1,
+          complemento1,
+          telefone2,
+          complemento2,
           celular,
-          complemento 3,
-          Fax,
-          complemento 4
+          complemento3,
+          fax,
+          complemento4
         });
 
         mensagem.textContent = "Usuário salvo com sucesso.";
@@ -72,36 +70,33 @@
       }
     });
   </script>
-    
 </head>
 <body>
     <fieldset>
         <legend>endereço</legend>
-        
         <form id="formulario">
+        <p>CEP<input id="cep" type="text"></p>
+
+        <p>endereço<input id="endereco" type="text"></p>
+
+        <p>complemento<input id="complemento" type="text">
+        bairro<input id="bairro" type="text"></p>
+
+        <p>cidade<input id="cidade" type="text"></p>
         
-        <p>CEP<input id="cep"  type="text"></p>
-
-        <p>endereço<input id="endereco"  type="text"></p>
-
-        <p>complemento<input id="complemento"  type="text">
-        bairro<input id="bairro"  type="text">
-
-        <p>cidade<input id="cidade"  type="text"></p>
-
         <p>telefone 1<input id="telefone1" type="text">
-        <p>complemento 1<input id="complemento1"  type="text"></p>
+        complemento 1<input id="complemento1" type="text"></p>
 
-        <p>telefone 2<input id="telefone2"  type="text">
-        <p>complemento 2<input id="complemento3"  type="text"></p>
+        <p>telefone 2<input id="telefone2" type="text">
+        complemento 2<input id="complemento2" type="text"></p>  
 
-        <p>celular<input id="celular"  type="text"></p>
-        <p>complemento 3<input id="complemento3"  type="text"></p>
+        <p>celular<input id="celular" type="text">
+        complemento 3<input id="complemento3" type="text"></p>
 
-        <p>Fax<input id="fax" " type="text">
-        <p>complemento 4<input id="complemento4"  type="text"></p>
-
-            <input type="submit" value="Cadastrar">
+        <p>Fax<input id="fax" class="" type="text">
+        complemento 4<input id="complemento4" type="text"></p>
+        <br><br>
+        <input type="submit" value="Cadastrar">
         </form>
     </fieldset>
 </body>
